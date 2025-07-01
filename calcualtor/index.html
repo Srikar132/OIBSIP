@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-calculator"></i>
+            <span>Scientific Calculator</span>
+        </div>
+        <button class="menu-btn" id="menuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Calculator Tools</h3>
+            <button class="close-btn" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-menu">
+            <a href="#" onclick="toggleHistory()">
+                <i class="fas fa-history"></i>
+                <span>History</span>
+            </a>
+            <a href="#" onclick="switchMode('scientific')">
+                <i class="fas fa-flask"></i>
+                <span>Scientific Mode</span>
+            </a>
+            <a href="#" onclick="switchMode('programmer')">
+                <i class="fas fa-code"></i>
+                <span>Programmer Mode</span>
+            </a>
+            <a href="#" onclick="clearHistory()">
+                <i class="fas fa-trash"></i>
+                <span>Clear History</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="history" id="history"></div>
+            
+            <div class="display">
+                <input type="text" class="display-main" id="mainDisplay" value="0" readonly>
+                <input type="text" class="display-secondary" id="secondaryDisplay" readonly>
+            </div>
+
+            <div class="function-toggles">
+                <button class="toggle-btn" id="trigBtn" onclick="togglePanel('trig')">
+                    <i class="fas fa-wave-square"></i>
+                    Trigonometry
+                </button>
+                <button class="toggle-btn" id="funcBtn" onclick="togglePanel('func')">
+                    <i class="fas fa-function"></i>
+                    Functions
+                </button>
+            </div>
+
+            <div class="function-panel" id="trigPanel">
+                <button class="function-btn" onclick="executeFunction('sin')">sin</button>
+                <button class="function-btn" onclick="executeFunction('cos')">cos</button>
+                <button class="function-btn" onclick="executeFunction('tan')">tan</button>
+                <button class="function-btn" onclick="executeFunction('asin')">sin⁻¹</button>
+                <button class="function-btn" onclick="executeFunction('acos')">cos⁻¹</button>
+                <button class="function-btn" onclick="executeFunction('atan')">tan⁻¹</button>
+            </div>
+
+            <div class="function-panel functions" id="funcPanel">
+                <button class="function-btn" onclick="executeFunction('abs')">|x|</button>
+                <button class="function-btn" onclick="executeFunction('floor')">⌊x⌋</button>
+                <button class="function-btn" onclick="executeFunction('ceil')">⌈x⌉</button>
+                <button class="function-btn" onclick="executeFunction('round')">round</button>
+                <button class="function-btn" onclick="executeFunction('random')">rand</button>
+                <button class="function-btn" onclick="executeFunction('percent')">%</button>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" onclick="toggleSecond()">2nd</button>
+                <button class="btn" onclick="insertConstant('PI')">π</button>
+                <button class="btn" onclick="insertConstant('E')">e</button>
+                <button class="btn clear" onclick="clearAll()">C</button>
+                <button class="btn clear" onclick="backspace()">
+                    <i class="fas fa-backspace"></i>
+                </button>
+
+                <button class="btn" onclick="append('1/')">1/x</button>
+                <button class="btn" onclick="executeFunction('square')">x²</button>
+                <button class="btn" onclick="executeFunction('sqrt')">√x</button>
+                <button class="btn" onclick="executeFunction('exp')">eˣ</button>
+                <button class="btn operator" onclick="append('%')">mod</button>
+
+                <button class="btn" onclick="executeFunction('power')">xʸ</button>
+                <button class="btn" onclick="append('(')">(</button>
+                <button class="btn" onclick="append(')')">)</button>
+                <button class="btn" onclick="executeFunction('factorial')">n!</button>
+                <button class="btn operator" onclick="append('/')">÷</button>
+
+                <button class="btn" onclick="executeFunction('power10')">10ˣ</button>
+                <button class="btn" onclick="append('7')">7</button>
+                <button class="btn" onclick="append('8')">8</button>
+                <button class="btn" onclick="append('9')">9</button>
+                <button class="btn operator" onclick="append('*')">×</button>
+
+                <button class="btn" onclick="executeFunction('log10')">log</button>
+                <button class="btn" onclick="append('4')">4</button>
+                <button class="btn" onclick="append('5')">5</button>
+                <button class="btn" onclick="append('6')">6</button>
+                <button class="btn operator" onclick="append('-')">−</button>
+
+                <button class="btn" onclick="executeFunction('log')">ln</button>
+                <button class="btn" onclick="append('1')">1</button>
+                <button class="btn" onclick="append('2')">2</button>
+                <button class="btn" onclick="append('3')">3</button>
+                <button class="btn operator" onclick="append('+')">+</button>
+
+                <button class="btn" onclick="toggleSign()">±</button>
+                <button class="btn" onclick="append('.')">.</button>
+                <button class="btn" onclick="append('0')">0</button>
+                <button class="btn equals" onclick="calculate()" style="grid-column: span 2;">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
